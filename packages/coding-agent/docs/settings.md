@@ -134,7 +134,7 @@ When a provider requests a retry delay longer than `maxDelayMs` (e.g., Google's 
 
 ### Resources
 
-These settings define where to load extensions, skills, prompts, and themes from.
+These settings define where to load extensions, skills, commands, and themes from.
 
 Paths in `~/.pi/agent/settings.json` resolve relative to `~/.pi/agent`. Paths in `.pi/settings.json` resolve relative to `.pi`. Absolute paths and `~` are supported.
 
@@ -143,7 +143,7 @@ Paths in `~/.pi/agent/settings.json` resolve relative to `~/.pi/agent`. Paths in
 | `packages` | array | `[]` | npm/git packages to load resources from |
 | `extensions` | string[] | `[]` | Local extension file paths or directories |
 | `skills` | string[] | `[]` | Local skill file paths or directories |
-| `prompts` | string[] | `[]` | Local prompt template paths or directories |
+| `commands` | string[] | `[]` | Local command template paths or directories |
 | `themes` | string[] | `[]` | Local theme file paths or directories |
 | `enableSkillCommands` | boolean | `true` | Register skills as `/skill:name` commands |
 

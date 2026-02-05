@@ -41,7 +41,7 @@ describe("DefaultPackageManager", () => {
 			const result = await packageManager.resolve();
 			expect(result.extensions).toEqual([]);
 			expect(result.skills).toEqual([]);
-			expect(result.prompts).toEqual([]);
+			expect(result.commands).toEqual([]);
 			expect(result.themes).toEqual([]);
 		});
 
@@ -94,10 +94,10 @@ Content`,
 			const promptPath = join(promptsDir, "auto.md");
 			writeFileSync(promptPath, "Auto prompt");
 
-			settingsManager.setPromptTemplatePaths(["!prompts/auto.md"]);
+			settingsManager.setPromptTemplatePaths(["!commands/auto.md"]);
 
 			const result = await packageManager.resolve();
-			expect(result.prompts.some((r) => r.path === promptPath && !r.enabled)).toBe(true);
+			expect(result.commands.some((r) => r.path === promptPath && !r.enabled)).toBe(true);
 		});
 
 		it("should auto-discover project prompts with overrides", async () => {
@@ -106,10 +106,10 @@ Content`,
 			const promptPath = join(promptsDir, "is.md");
 			writeFileSync(promptPath, "Is prompt");
 
-			settingsManager.setProjectPromptTemplatePaths(["!prompts/is.md"]);
+			settingsManager.setProjectPromptTemplatePaths(["!commands/is.md"]);
 
 			const result = await packageManager.resolve();
-			expect(result.prompts.some((r) => r.path === promptPath && !r.enabled)).toBe(true);
+			expect(result.commands.some((r) => r.path === promptPath && !r.enabled)).toBe(true);
 		});
 	});
 
@@ -286,8 +286,8 @@ Content`,
 			settingsManager.setPromptTemplatePaths(["prompts", "!explain.md"]);
 
 			const result = await packageManager.resolve();
-			expect(result.prompts.some((r) => isEnabled(r, "review.md"))).toBe(true);
-			expect(result.prompts.some((r) => isDisabled(r, "explain.md"))).toBe(true);
+			expect(result.commands.some((r) => isEnabled(r, "review.md"))).toBe(true);
+			expect(result.commands.some((r) => isDisabled(r, "explain.md"))).toBe(true);
 		});
 
 		it("should filter skills with exclusion pattern", async () => {
@@ -400,7 +400,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["!**/bar.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -426,7 +426,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["!**/baz.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -448,7 +448,7 @@ Content`,
 					source: pkgDir,
 					extensions: [],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: ["!ugly.json"],
 				},
 			]);
@@ -470,7 +470,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["**/alpha.ts", "**/beta.ts", "!**/beta.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -492,7 +492,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["extensions/one.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -532,7 +532,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["!**/*.ts", "+extensions/beta.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -557,7 +557,7 @@ Content`,
 					source: pkgDir,
 					extensions: [],
 					skills: ["!**/*", "+skills/skill-a", "+skills/skill-c"],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);
@@ -626,12 +626,12 @@ Content`,
 			writeFileSync(join(promptsDir, "explain.md"), "Explain");
 			writeFileSync(join(promptsDir, "debug.md"), "Debug");
 
-			settingsManager.setPromptTemplatePaths(["prompts", "!prompts/*.md", "+prompts/debug.md"]);
+			settingsManager.setPromptTemplatePaths(["prompts", "!commands/*.md", "+commands/debug.md"]);
 
 			const result = await packageManager.resolve();
-			expect(result.prompts.some((r) => isDisabled(r, "review.md"))).toBe(true);
-			expect(result.prompts.some((r) => isDisabled(r, "explain.md"))).toBe(true);
-			expect(result.prompts.some((r) => isEnabled(r, "debug.md"))).toBe(true);
+			expect(result.commands.some((r) => isDisabled(r, "review.md"))).toBe(true);
+			expect(result.commands.some((r) => isDisabled(r, "explain.md"))).toBe(true);
+			expect(result.commands.some((r) => isEnabled(r, "debug.md"))).toBe(true);
 		});
 	});
 
@@ -660,7 +660,7 @@ Content`,
 					source: pkgDir,
 					extensions: ["extensions/*.ts", "+extensions/alpha.ts", "-extensions/alpha.ts"],
 					skills: [],
-					prompts: [],
+					commands: [],
 					themes: [],
 				},
 			]);

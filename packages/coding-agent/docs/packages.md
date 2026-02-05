@@ -87,7 +87,7 @@ Add a `pi` manifest to `package.json` or use conventional directories. Include t
   "pi": {
     "extensions": ["./extensions"],
     "skills": ["./skills"],
-    "prompts": ["./prompts"],
+    "commands": ["./commands"],
     "themes": ["./themes"]
   }
 }
@@ -124,7 +124,7 @@ If no `pi` manifest is present, pi auto-discovers resources from these directori
 
 - `extensions/` loads `.ts` and `.js` files
 - `skills/` recursively finds `SKILL.md` folders and loads top-level `.md` files as skills
-- `prompts/` loads `.md` files
+- `commands/` loads `.md` files
 - `themes/` loads `.json` files
 
 ## Dependencies
@@ -162,7 +162,7 @@ Filter what a package loads using the object form in settings:
       "source": "npm:my-package",
       "extensions": ["extensions/*.ts", "!extensions/legacy.ts"],
       "skills": [],
-      "prompts": ["prompts/review.md"],
+      "commands": ["commands/review.md"],
       "themes": ["+themes/legacy.json"]
     }
   ]

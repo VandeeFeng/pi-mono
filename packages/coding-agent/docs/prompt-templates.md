@@ -8,10 +8,10 @@ Prompt templates are Markdown snippets that expand into full prompts. Type `/nam
 
 Pi loads prompt templates from:
 
-- Global: `~/.pi/agent/prompts/*.md`
-- Project: `.pi/prompts/*.md`
-- Packages: `prompts/` directories or `pi.prompts` entries in `package.json`
-- Settings: `prompts` array with files or directories
+- Global: `~/.pi/agent/commands/*.md`
+- Project: `.pi/commands/*.md`
+- Packages: `commands/` directories or `pi.commands` entries in `package.json`
+- Settings: `commands` array with files or directories
 - CLI: `--prompt-template <path>` (repeatable)
 
 Disable discovery with `--no-prompt-templates`.
@@ -63,5 +63,5 @@ Usage: `/component Button "onClick handler" "disabled support"`
 
 ## Loading Rules
 
-- Template discovery in `prompts/` is non-recursive.
-- If you want templates in subdirectories, add them explicitly via `prompts` settings or a package manifest.
+- Template discovery in `commands/` is non-recursive.
+- If you want templates in subdirectories, add them explicitly via `commands` settings or a package manifest.

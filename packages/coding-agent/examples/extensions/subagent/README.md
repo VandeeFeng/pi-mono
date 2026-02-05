@@ -23,7 +23,7 @@ subagent/
 │   ├── planner.md       # Creates implementation plans
 │   ├── reviewer.md      # Code review
 │   └── worker.md        # General-purpose (full capabilities)
-└── prompts/             # Workflow presets (prompt templates)
+└── commands/            # Workflow presets (prompt templates)
     ├── implement.md     # scout -> planner -> worker
     ├── scout-and-plan.md    # scout -> planner (no implementation)
     └── implement-and-review.md  # worker -> reviewer -> worker
@@ -46,9 +46,9 @@ for f in packages/coding-agent/examples/extensions/subagent/agents/*.md; do
 done
 
 # Symlink workflow prompts
-mkdir -p ~/.pi/agent/prompts
-for f in packages/coding-agent/examples/extensions/subagent/prompts/*.md; do
-  ln -sf "$(pwd)/$f" ~/.pi/agent/prompts/$(basename "$f")
+mkdir -p ~/.pi/agent/commands
+for f in packages/coding-agent/examples/extensions/subagent/commands/*.md; do
+  ln -sf "$(pwd)/$f" ~/.pi/agent/commands/$(basename "$f")
 done
 ```
 

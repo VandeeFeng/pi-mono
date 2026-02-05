@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Breaking Changes
+
+- Renamed `prompts/` directory to `commands/` for prompt templates. Update your configurations:
+  - Directory paths: `~/.pi/agent/prompts/` → `~/.pi/agent/commands/`, `.pi/prompts/` → `.pi/commands/`
+  - Settings field: `settings.json` `prompts` array → `commands` array
+  - Package manifest: `package.json` `pi.prompts` → `pi.commands`
+  - TypeScript types: `ResourceType` and `ResolvedPaths` now use `commands` instead of `prompts`
+  - Automatic migration: existing `prompts/` directories are renamed to `commands/` on startup
+
 ### Added
 
 - API keys in `auth.json` now support shell command resolution (`!command`) and environment variable lookup, matching the behavior in `models.json`

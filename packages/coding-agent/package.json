@@ -1,6 +1,6 @@
 {
   "name": "@vandeepunk/pi-coding-agent",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Coding agent CLI with read, bash, edit, write tools and session management forked from @mariozechner/pi-coding-agent",
   "type": "module",
   "piConfig": {

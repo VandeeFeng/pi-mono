@@ -330,7 +330,7 @@ export class DefaultResourceLoader implements ResourceLoader {
 		this.pathMetadata = new Map();
 		const enabledExtensions = getEnabledPaths(resolvedPaths.extensions);
 		const enabledSkillResources = getEnabledResources(resolvedPaths.skills);
-		const enabledPrompts = getEnabledPaths(resolvedPaths.prompts);
+		const enabledCommands = getEnabledPaths(resolvedPaths.commands);
 		const enabledThemes = getEnabledPaths(resolvedPaths.themes);
 
 		const mapSkillPath = (resource: { path: string; metadata: PathMetadata }): string => {
@@ -371,7 +371,7 @@ export class DefaultResourceLoader implements ResourceLoader {
 
 		const cliEnabledExtensions = getEnabledPaths(cliExtensionPaths.extensions);
 		const cliEnabledSkills = getEnabledPaths(cliExtensionPaths.skills);
-		const cliEnabledPrompts = getEnabledPaths(cliExtensionPaths.prompts);
+		const cliEnabledCommands = getEnabledPaths(cliExtensionPaths.commands);
 		const cliEnabledThemes = getEnabledPaths(cliExtensionPaths.themes);
 
 		const extensionPaths = this.noExtensions
@@ -403,8 +403,8 @@ export class DefaultResourceLoader implements ResourceLoader {
 		this.updateSkillsFromPaths(skillPaths);
 
 		const promptPaths = this.noPromptTemplates
-			? this.mergePaths(cliEnabledPrompts, this.additionalPromptTemplatePaths)
-			: this.mergePaths([...enabledPrompts, ...cliEnabledPrompts], this.additionalPromptTemplatePaths);
+			? this.mergePaths(cliEnabledCommands, this.additionalPromptTemplatePaths)
+			: this.mergePaths([...enabledCommands, ...cliEnabledCommands], this.additionalPromptTemplatePaths);
 
 		this.lastPromptPaths = promptPaths;
 		this.updatePromptsFromPaths(promptPaths);
@@ -782,13 +782,13 @@ export class DefaultResourceLoader implements ResourceLoader {
 
 		const agentRoots = [
 			join(this.agentDir, "skills"),
-			join(this.agentDir, "prompts"),
+			join(this.agentDir, "commands"),
 			join(this.agentDir, "themes"),
 			join(this.agentDir, "extensions"),
 		];
 		const projectRoots = [
 			join(this.cwd, CONFIG_DIR_NAME, "skills"),
-			join(this.cwd, CONFIG_DIR_NAME, "prompts"),
+			join(this.cwd, CONFIG_DIR_NAME, "commands"),
 			join(this.cwd, CONFIG_DIR_NAME, "themes"),
 			join(this.cwd, CONFIG_DIR_NAME, "extensions"),
 		];

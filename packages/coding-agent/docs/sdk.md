@@ -259,14 +259,14 @@ const { session } = await createAgentSession({
 `cwd` is used by `DefaultResourceLoader` for:
 - Project extensions (`.pi/extensions/`)
 - Project skills (`.pi/skills/`)
-- Project prompts (`.pi/prompts/`)
+- Project prompts (`.pi/commands/`)
 - Context files (`AGENTS.md` walking up from cwd)
 - Session directory naming
 
 `agentDir` is used by `DefaultResourceLoader` for:
 - Global extensions (`extensions/`)
 - Global skills (`skills/`)
-- Global prompts (`prompts/`)
+- Global prompts (`commands/`)
 - Global context file (`AGENTS.md`)
 - Settings (`settings.json`)
 - Custom models (`models.json`)
@@ -581,6 +581,8 @@ const loader = new DefaultResourceLoader({
 await loader.reload();
 
 const { session } = await createAgentSession({ resourceLoader: loader });
+
+const { session } = await createAgentSession({ resourceLoader: loader });
 ```
 
 > See [examples/sdk/08-prompt-templates.ts](../examples/sdk/08-prompt-templates.ts)
@@ -704,7 +706,7 @@ Project overrides global. Nested objects merge keys. Setters modify global setti
 
 ## ResourceLoader
 
-Use `DefaultResourceLoader` to discover extensions, skills, prompts, themes, and context files.
+Use `DefaultResourceLoader` to discover extensions, skills, commands, themes, and context files.
 
 ```typescript
 import {

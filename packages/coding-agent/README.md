@@ -153,7 +153,7 @@ Type `/` in the editor to trigger commands. [Extensions](#extensions) can regist
 | `/copy` | Copy last assistant message to clipboard |
 | `/export [file]` | Export session to HTML file |
 | `/share` | Upload as private GitHub gist with shareable HTML link |
-| `/reload` | Reload extensions, skills, prompts, context files (themes hot-reload automatically) |
+| `/reload` | Reload extensions, skills, commands, context files (themes hot-reload automatically) |
 | `/hotkeys` | Show all keyboard shortcuts |
 | `/changelog` | Display version history |
 | `/quit`, `/exit` | Quit pi |
@@ -263,12 +263,12 @@ Replace the default system prompt with `.pi/SYSTEM.md` (project) or `~/.pi/agent
 Reusable prompts as Markdown files. Type `/name` to expand.
 
 ```markdown
-<!-- ~/.pi/agent/prompts/review.md -->
+<!-- ~/.pi/agent/commands/review.md -->
 Review this code for bugs, security issues, and performance problems.
 Focus on: {{focus}}
 ```
 
-Place in `~/.pi/agent/prompts/`, `.pi/prompts/`, or a [pi package](#pi-packages) to share with others. See [docs/prompt-templates.md](docs/prompt-templates.md).
+Place in `~/.pi/agent/commands/`, `.pi/commands/`, or a [pi package](#pi-packages) to share with others. See [docs/prompt-templates.md](docs/prompt-templates.md).
 
 ### Skills
 
@@ -337,7 +337,7 @@ pi install https://github.com/user/repo
 pi remove npm:@foo/pi-tools
 pi list
 pi update                               # skips pinned packages
-pi config                               # enable/disable extensions, skills, prompts, themes
+pi config                               # enable/disable extensions, skills, commands, themes
 ```
 
 Packages install to `~/.pi/agent/git/` (git) or global npm. Use `-l` for project-local installs (`.pi/git/`, `.pi/npm/`).
@@ -351,13 +351,13 @@ Create a package by adding a `pi` key to `package.json`:
   "pi": {
     "extensions": ["./extensions"],
     "skills": ["./skills"],
-    "prompts": ["./prompts"],
+    "commands": ["./commands"],
     "themes": ["./themes"]
   }
 }
 ```
 
-Without a `pi` manifest, pi auto-discovers from conventional directories (`extensions/`, `skills/`, `prompts/`, `themes/`).
+Without a `pi` manifest, pi auto-discovers from conventional directories (`extensions/`, `skills/`, `commands/`, `themes/`).
 
 See [docs/packages.md](docs/packages.md).
 

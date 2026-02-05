@@ -16,7 +16,7 @@ const deployTemplate: PromptTemplate = {
 	name: "deploy",
 	description: "Deploy the application",
 	source: "path",
-	filePath: "/virtual/prompts/deploy.md",
+	filePath: "/virtual/commands/deploy.md",
 	content: `# Deploy Instructions
 
 1. Build: npm run build
@@ -32,7 +32,7 @@ const loader = new DefaultResourceLoader({
 });
 await loader.reload();
 
-// Discover templates from cwd/.pi/prompts/ and ~/.pi/agent/prompts/
+// Discover templates from cwd/.pi/commands/ and ~/.pi/agent/commands/
 const discovered = loader.getPrompts().prompts;
 console.log("Discovered prompt templates:");
 for (const template of discovered) {
